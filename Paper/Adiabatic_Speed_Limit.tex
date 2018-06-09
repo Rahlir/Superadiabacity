@@ -1,0 +1,66 @@
+%
+\documentclass[twocolumn,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+ prl
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{braket}
+\usepackage{dsfont}
+\usepackage{color}
+\usepackage{bbm}
+\usepackage{hhline}
+
+%\setlength\parindent{0in}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\tr}{tr}
+
+\begin{document}
+
+\title{Superadiabatic pulse engineering}
+\author{Jonathan Vandermause}
+\affiliation{Department of Physics, Harvard University, Cambridge, Masachussetts 02138, USA}
+\author{Chandrasekhar Ramanathan}
+\affiliation{Department of Physics and Astronomy, Dartmouth College, Hanover, New Hampshire 03755, USA}
+\date{\today}
+
+\begin{abstract}
+The design of fast, high fidelity adiabatic waveforms is an open challenge in the theory of adiabatic quantum control. We propose a simple optimization scheme for designing fast and accurate adiabatic waveforms that maximizes adiabaticity in Berry?s superadiabatic interaction pictures and may in principle be applied to control problems in an arbitrarily large Hilbert space. The scheme is applied to a single qubit control problem that has recently been studied in the context of experimental quantum computation. The resulting pulses are compared to optimal waveforms generated using Slepian window functions and are shown to achieve high fidelities at pulse lengths near the quantum speed limit. The scheme is extended to a two-qubit entangling gate and implemented on an NMR spectrometer.\end{abstract}
+
+\maketitle
+
+\section{Introduction} 
+\vspace*{-0.15in}
+The Landau-Zener Hamiltonian is given by:
+\begin{equation}
+\hat{H}(t) = \frac{1}{2}\omega_{\text{dr}} \sigma_x +\frac{1}{2}\omega_{\text{det}}(t) \sigma_z
+\end{equation}
+
+\begin{equation}
+H(t_i)\ket{\Psi(t_i)}
+\end{equation}
+
+\begin{equation}
+H(t_f)\ket{\Psi(t_f)}
+\end{equation}
+
+\end{document}
