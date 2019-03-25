@@ -4,6 +4,7 @@ function [result] = correct_atan(delta_omega,omega_1)
 
 result = zeros(1,length(omega_1));
 
+add = 0;
 factor = 0;
 for n = 1 : length(delta_omega)
     result(n) = atan(delta_omega(n) / omega_1(n)) + factor;
@@ -28,4 +29,9 @@ if result(1) < 0
 else
     result = result - pi/2;
 end
+
+% figure
+% plot(initial)
+% figure
+% plot(result)
        

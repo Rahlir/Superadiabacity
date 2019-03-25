@@ -22,6 +22,7 @@ for n = 1:length(delta)-2
 end
 q(1) = min(Q(1,1:length(delta) - 2));
 
+
 % Iterate over superadiabatic frames.
 for n = 2 : iterations
     % Number of points drops by two for each iteration.

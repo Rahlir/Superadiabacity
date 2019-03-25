@@ -16,8 +16,8 @@ H_init = delta_omega(1) * sigma_z + omega_1(1) * sigma_x;
 H_fin = -delta_omega(1) * sigma_z + omega_1(1) * sigma_x;
 [V_init, D_init] = eig(H_init);
 [V_fin, D_fin] = eig(H_fin);
-initial_state = V_init(:, 1);
-target_state = V_fin(:, 1);
+initial_state = V_init(:, 1); % No matter what the starting spin is
+target_state = V_fin(:, 1); % No matter what the starting spin is
 % initial_state = [1; 0];
 % target_state = [0; 1];
 

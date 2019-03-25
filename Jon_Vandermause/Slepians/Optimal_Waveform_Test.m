@@ -51,5 +51,5 @@ final_theta = interp1(ts, thetas, real_ts);
 % Report pulse length.
 ts(length(ts)) / (2 * pi)
 
-% figure
-% plot(real_ts, final_theta / pi)
+figure
+plot(real_ts, final_theta / pi)

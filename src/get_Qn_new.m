@@ -1,3 +1,5 @@
+% FUNCTION TO GET Q_FACTOR AT GIVEN FRAME
+
 % 4/9/2015
 % Jon Vandermause
 % get_Qn_new
