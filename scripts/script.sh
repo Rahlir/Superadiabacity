@@ -1,10 +1,8 @@
 #!/bin/bash
 
-filename=$4
-matsc=$5
-matsc_fn=$6
+filename=$3
+matsc=$4
 
-awk -v fn="$filename" -v pl="$1" -v fm="$2" -v md="$3" -f change.awk generate_pulse.m > "$matsc".m &&
-matlab -nodisplay -nojvm -nosplash -nodesktop -r "${matsc};exit" &&
-mv "$matsc".m "$matsc_fn"
-echo DONE: $filename $matsc_fn
+awk -v fn="$filename" -v fm="$1" -v md="$2" -f scripts/change.awk brute_force/generate_pulse.m > brute_force/"$matsc".m &&
+matlab -nodisplay -nojvm -nosplash -nodesktop -r "cd brute_force;${matsc};exit" &&
+echo DONE: $filename $matsc.m
