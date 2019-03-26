@@ -4,7 +4,7 @@
 % generate_random_pulse_script script
 % ------------------------------------------------------------------------------
 
-filename = 'BruteForce/output/random_pulse.mat';
+filename = 'output/random_pulse.mat';
 
 nop = 60;
 w1_max = 8e4;

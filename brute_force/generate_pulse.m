@@ -11,13 +11,12 @@
 
 tic
 
-filename = "test.mat";
-
 % Control parameters
+filename = "test.mat";
 frame = 2;
 max_deriv = 1;
 
-max_time = 300;
+max_time = 60;
 size_epsilon = 10;
 nop = 60;
 
