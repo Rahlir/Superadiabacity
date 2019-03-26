@@ -18,7 +18,7 @@ while getopts ':h' option; do
 done
 shift $((OPTIND-1))
 
-base=$(date "+%H_%M_%S")
+base=$(date "+h%Hm%Ms%S")
 filename="$base".mat
 
 ssh "$1".cs.dartmouth.edu "tmux send-keys -t MAIN.0 './scripts/script.sh "$2" "$3" "$filename" "$base"' ENTER" &&
