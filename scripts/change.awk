@@ -1,19 +1,16 @@
 
-NR<6 {
+NR<15 {
 	print $0
 }
-NR==6 {
+NR==15 {
 	print "filename = \'"fn"\';"
 }
-NR==7 {
-	print "pl = "pl";"
-}
-NR==8 {
+NR==16 {
 	print "frame = "fm";"
 }
-NR==9 {
+NR==17 {
 	print "max_deriv = "md";"
 }
-NR>9 {
+NR>17 {
 	print $0
 }
