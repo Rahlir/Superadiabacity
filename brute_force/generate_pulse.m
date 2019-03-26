@@ -11,32 +11,28 @@
 
 tic
 
+filename = "test.mat";
+
 % Control parameters
-filename = 'test.mat';
-pl = 50e-6;
 frame = 2;
 max_deriv = 1;
-max_time = 600;
 
+max_time = 300;
 size_epsilon = 10;
 nop = 60;
 
-[delta_guess, omega_guess] = generate_random_pulse(60, 8e4);
+load('output/random_pulse.mat', 'delta_guess_fine', 'omega_guess_fine', 'original_q', 'dt', 'pl')
 
-x = 0 : pl/(nop-1) : pl;
-xx = 0 : pl/(nop*5-1) : pl;
+% Start with saved guess pulse
+delta_omega = delta_guess_fine;
+omega_1 = omega_guess_fine;
 
-del = spline(x, delta_guess, xx);
-om = spline(x, omega_guess, xx);
-
-delta_omega = del;
-omega_1 = om;
 radii =  29 : -2 : 3;
 centers = 1 : length(delta_omega);
 orig_centers = centers;
 maximum = 8e4;
 
-spacing = pl / (length(delta_omega) - 1);
+spacing = dt;
 
 number_of_points = length(delta_omega);
 
@@ -163,5 +159,8 @@ while toc < max_time
     end
 
 end
+
 tim = toc;
-save(filename, 'best_delta_omega', 'best_omega_1', 'del', 'om', 'q_whole', 'tim', 'pl', 'frame', 'max_deriv', 'size_epsilon', 'total')
+
+save(join(["output", filename], "/"), 'best_delta_omega', 'best_omega_1', ...
+     'q_whole', 'tim', 'pl', 'frame', 'max_deriv', 'size_epsilon', 'total')
