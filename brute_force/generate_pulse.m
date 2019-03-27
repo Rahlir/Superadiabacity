@@ -26,7 +26,7 @@ load('random_pulse.mat', 'delta_guess_fine', 'omega_guess_fine', 'original_q', '
 delta_omega = delta_guess_fine;
 omega_1 = omega_guess_fine;
 
-radii =  29 : -2 : 3;
+radii =  30 : -2 : 4;
 centers = 1 : length(delta_omega);
 orig_centers = centers;
 maximum = 8e4;
