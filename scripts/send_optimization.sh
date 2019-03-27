@@ -23,4 +23,4 @@ filename="$base".mat
 
 ssh "$1".cs.dartmouth.edu "tmux send-keys -t MAIN.0 './scripts/script.sh "$2" "$3" "$filename" "$base"' ENTER" &&
 echo RUNNING ON $1
-echo "scp $1.cs.dartmouth.edu:~/Development/Physics/Superadiabaticity/brute_force/$filename ." >> scripts/runafter.sh
+echo "$1 $filename: frame = $2, maxderiv = $3" >> scripts/log
