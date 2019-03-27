@@ -15,8 +15,6 @@ function[data_final] = load_all_v2(dir_name)
 
     if nargin > 0
         str_files = strjoin({dir_name, str_files}, '/');
-    else
-        str_files = strjoin({'data', str_files}, '/');
     end
 
     files = dir(str_files);
@@ -34,6 +32,9 @@ function[data_final] = load_all_v2(dir_name)
     totals = zeros(length(files), 1);
     legs = strings(length(files), 1);
 
+    load("random_pulse.mat", "delta_guess_fine", "omega_guess_fine", ...
+         "original_q", "dt", "pl")
+
     for i=1:length(files)
         progress = (i-1)/length(files)*100;
         
@@ -45,7 +46,8 @@ function[data_final] = load_all_v2(dir_name)
         name = files(i).name;
         folder = files(i).folder;
         filename = strjoin({folder, name}, '/');
-        load(filename, 'best_delta_omega', 'best_omega_1', 'del', 'om', 'q_whole', ...
+
+        load(filename, 'best_delta_omega', 'best_omega_1', 'q_whole', ...
             'tim', 'pl', 'frame', 'max_deriv', 'total')
         
         info = generate_info(pl, frame, max_deriv, total);
@@ -53,11 +55,10 @@ function[data_final] = load_all_v2(dir_name)
         identifier = generate_identifier_v2(sprintf('or%4.2f', max_deriv), pl*1e6, frame);
         identifiers(i) = identifier;
         
-        q_orig = get_Q_curves(del, om, pl/299, frame);
-        q_origs(i) = q_orig(frame);
+        q_origs(i) = original_q(frame);
         
-        guess_deltas(i, :) = del;
-        guess_omegas(i, :) = om;
+        guess_deltas(i, :) = delta_guess_fine;
+        guess_omegas(i, :) = omega_guess_fine;
         best_deltas(i, :) = best_delta_omega;
         best_omegas(i, :) = best_omega_1;
         q_wholes(i) = q_whole;
