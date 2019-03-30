@@ -20,7 +20,7 @@ max_time = 3 * 3600;
 size_epsilon = 10;
 nop = 60;
 
-load('random_pulse.mat', 'delta_guess_fine', 'omega_guess_fine', 'original_q', 'dt', 'pl')
+load('random_pulse_new.mat', 'delta_guess_fine', 'omega_guess_fine', 'original_q', 'dt', 'pl')
 
 % Start with saved guess pulse
 delta_omega = delta_guess_fine;

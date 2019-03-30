@@ -1,14 +1,16 @@
 % ------------------------------------------------------------------------------
+% script generate_random_pulse_script - generates random guess pulse to be
+% optimized later and saves it to the disc
+% 
 % Tadeáš Uhlíř
 % 03/26/2019
-% generate_random_pulse_script script
 % ------------------------------------------------------------------------------
 
-filename = 'random_pulse.mat';
+filename = 'random_pulse_new.mat';
 
 nop = 60;
 w1_max = 8e4;
-pl = 50e-6;
+pl = 60e-6;
 
 [delta_guess, omega_guess] = generate_random_pulse(nop, w1_max);
 
