@@ -30,7 +30,7 @@ function[x_ax, f_states] = get_stress(data, inds)
     else
         [x, f_s] = stress_test(data.Pulse(ind, :, 1), data.Pulse(ind, :, 2), ...
             max_pl, n_points);
-        save(fn, 'x', 'f_s', 'y')
+        save(fn, 'x', 'f_s')
     end
 
     x_ax = zeros(length(inds), length(x));
