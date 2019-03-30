@@ -4,7 +4,7 @@
 % generate_random_pulse_script script
 % ------------------------------------------------------------------------------
 
-filename = 'output/random_pulse.mat';
+filename = 'random_pulse.mat';
 
 nop = 60;
 w1_max = 8e4;
@@ -18,7 +18,7 @@ xx = 0 : pl/(nop*5-1) : pl;
 delta_guess_fine = spline(x, delta_guess, xx);
 omega_guess_fine = spline(x, omega_guess, xx);
 
-dt = pl / (length(delta_guess) - 1);
+dt = pl / (length(delta_guess_fine) - 1);
 
 original_q = get_Q_curves(delta_guess_fine, omega_guess_fine, dt, 10);
 
