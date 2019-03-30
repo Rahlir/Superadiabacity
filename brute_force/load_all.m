@@ -1,15 +1,17 @@
 % ------------------------------------------------------------------------------
-% Based on:
-% Tadeas Uhlir
-% 08/24/2018
-% load_all function
+% function load_all - loads the relevant data from the folder where it is stored
+% 
+% Inputs:
+%   dir_name - directory name where the data is saved
+% Outputs:
+%   data_final - table containing the data. Guess pulses, optimized pulses,
+%                q-factors, pulse lengths, etc.
 %
 % Tadeáš Uhlíř
-% 03/27/2019
-% load_all_v2 function
+% 03/30/2019
 % ------------------------------------------------------------------------------
 
-function[data_final] = load_all_v2(dir_name)
+function[data_final] = load_all(dir_name)
 
     str_files = '*.mat';
 
@@ -65,7 +67,7 @@ function[data_final] = load_all_v2(dir_name)
     times_m = times/60;
     imprvs_m = imprvs./times_m;
 
-    data_final = table(categorical(pls), cat(3, best_deltas, best_omegas), ...
+    data_final = table(pls, cat(3, best_deltas, best_omegas), ...
         cat(3, guess_deltas, guess_omegas), q_wholes, q_origs, imprvs, iterations, imprvs_m, ...
         'VariableNames', {'Pulse_length', 'Pulse', 'Guess_pulse', 'Q_factor', 'Original_Q', ...
         'Improvement', 'Iterations', 'Improvement_per_min'});
