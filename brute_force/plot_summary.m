@@ -40,6 +40,7 @@ function[fig] = plot_summary(data, inds)
             legend(ax)
         end
     end
+
     s1 = all_axes(1);
     s2 = all_axes(2);
     s3 = all_axes(3);
