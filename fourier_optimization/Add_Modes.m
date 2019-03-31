@@ -49,12 +49,12 @@ for j = 1 : frame_no
 
         % Run the optimization.
         options = optimoptions('fmincon','MaxFunEvals',1e4);
-        [par, fval] = fmincon(@(par) Fourier_Q(par, delta_omega, ...
+        [par, fval] = fmincon(@(par) fourier_q(par, delta_omega, ...
             omega_1, T, frame), seed, [], [], [], [], ...
             lowb, upperb, [], options);
 
         Q = 1/fval
-        Four_Func = Get_Four_Func(delta_omega, par);    % retrieve pulse
+        Four_Func = get_four_func(delta_omega, par);    % retrieve pulse
         par
     end
 end

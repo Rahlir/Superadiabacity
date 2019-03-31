@@ -18,7 +18,7 @@ end
 frame = 3;
 
 % Search for Fourier-optimized pulse that maximizes the Q-factor.
-[par, fval] = fmincon(@(par) Fourier_Q(par, delta_omega, ...
+[par, fval] = fmincon(@(par) fourier_q(par, delta_omega, ...
     omega_1, T, frame), [10 * rand, 10 * ((rand * 2) - 1), ...
     10 * ((rand * 2) - 1), 10 * ((rand * 2) - 1), ...
     10 * ((rand * 2) - 1)], [], [], [], [], ...
@@ -27,7 +27,7 @@ frame = 3;
 par
 1/fval
 
-Four_Func = Get_Four_Func(delta_omega, par);
+Four_Func = get_four_func(delta_omega, par);
 
 clf
 plot(delta_omega)

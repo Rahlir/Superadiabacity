@@ -13,7 +13,7 @@ rep = 100;  % number of pulses generated for each Q factor
 frame_no = 3;   % number of Q factors to optimize
 
 % Prepare pulse.
-[omega_1, delta_omega] = Prepare_Initial_Pulse(nop, power, detune_factor);
+[omega_1, delta_omega] = prepare_initial_pulse(nop, power, detune_factor);
 
 % Prepare optimization.
 mode_bound = upperb_fac * detune_factor;    % restricts size of modes
@@ -40,12 +40,12 @@ for j = 1 : frame_no
         % entry of par in order to avoid runaway solutions. Other than this
         % bound, no constraints are placed on the optimization.
         options = optimoptions('fmincon','MaxFunEvals',1e4);
-        [par, fval] = fmincon(@(par) Fourier_Q(par, delta_omega, ...
+        [par, fval] = fmincon(@(par) fourier_q(par, delta_omega, ...
             omega_1, T, frame), rand_guess, [], [], [], [], ...
             lowb, upperb, [], options);
 
         Q = 1/fval
-        Four_Func = Get_Four_Func(delta_omega, par);    % retrieve pulse
+        Four_Func = get_four_func(delta_omega, par);    % retrieve pulse
 
         % Store the results of the optimization.
         store_Q(j, p) = Q;
