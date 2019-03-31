@@ -18,7 +18,7 @@
 % May 28, 2017
 % ------------------------------------------------------------------------------
 
-function[omega_1, delta_omega] = Prepare_Initial_Pulse(nop, power, ...
+function[omega_1, delta_omega] = prepare_initial_pulse(nop, power, ...
     detune_factor)
 
     omega_1 = ones(1, nop) * power;

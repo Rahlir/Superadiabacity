@@ -13,7 +13,7 @@ rep = 100;  % number of pulses generated for each Q factor
 frame_no = 3;   % number of Q factors to optimize
 
 % Prepare pulse.
-[omega_1, delta_omega] = Prepare_Initial_Pulse(nop, power, detune_factor);
+[omega_1, delta_omega] = prepare_initial_pulse(nop, power, detune_factor);
 
 % Prepare optimization.
 mode_bound = upperb_fac * detune_factor;    % restricts size of modes
