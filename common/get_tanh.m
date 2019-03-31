@@ -21,8 +21,8 @@
 % 1/30/2015
 % ------------------------------------------------------------------------------
 
-function[delta_omega, omega_1, Q_n] = ...
-    get_tanh(number_of_points, A, kappa, w_1_max, squiggle, time_step)
+function[delta_omega, omega_1, Q_n] = get_tanh(number_of_points, A, kappa, w_1_max, ...
+                                               squiggle, time_step)
 
     % This pulse is taken from Hwang/Garwood 1998.
 
