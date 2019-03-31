@@ -20,13 +20,15 @@ max_time = 3 * 3600;
 size_epsilon = 10;
 nop = 60;
 
-load('random_pulse_new.mat', 'delta_guess_fine', 'omega_guess_fine', 'original_q', 'dt', 'pl')
+load('random_pulse_paper.mat', 'delta_guess_fine', 'omega_guess_fine', 'original_q', 'dt', 'pl')
 
 % Start with saved guess pulse
 delta_omega = delta_guess_fine;
 omega_1 = omega_guess_fine;
 
-radii =  30 : -2 : 4;
+radii =  29 : -2 : 3;
+% radii =  30 : -2 : 4;
+
 centers = 1 : length(delta_omega);
 orig_centers = centers;
 maximum = 8e4;
@@ -161,5 +163,5 @@ end
 
 tim = toc;
 
-save(join(["output", filename], "/"), 'best_delta_omega', 'best_omega_1', ...
+save(join(["paper_output", filename], "/"), 'best_delta_omega', 'best_omega_1', ...
      'q_whole', 'tim', 'pl', 'frame', 'max_deriv', 'size_epsilon', 'total')
