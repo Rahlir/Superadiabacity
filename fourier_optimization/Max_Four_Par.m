@@ -27,7 +27,7 @@ frame = 3;
 par
 1/fval
 
-Four_Func = Get_Four_Func(delta_omega, par);
+Four_Func = get_four_func(delta_omega, par);
 
 clf
 plot(delta_omega)

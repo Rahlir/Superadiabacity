@@ -64,7 +64,7 @@ for p = 1 : rep
         lowb, upperb, [], options);
 
     Q = 1/fval
-    Four_Func = Get_Four_Func(delta_omega, par);    % retrieve pulse
+    Four_Func = get_four_func(delta_omega, par);    % retrieve pulse
 
     % Store the results of the optimization.
     store_Q(1, p) = Q;
