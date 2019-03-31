@@ -92,7 +92,7 @@ function[fig] = plot_summary(data, inds)
 
         plot(s5, x_ax, real(f_states).^2, 'LineWidth', 1, 'Color', colors(ind,:), ...
             'DisplayName', leg)
-        real(f_states)
+        % real(f_states)
         % plot(s6, x_ax, y2, 'LineWidth', 1, 'Color', colors(ind,:), ...
             % 'DisplayName', leg)
     end
