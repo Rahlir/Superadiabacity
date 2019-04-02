@@ -168,5 +168,5 @@ end
 
 tim = toc;
 
-save(join(["paper_output", filename], "/"), 'best_delta_omega', 'best_omega_1', ...
+save(join(["paper_output_v2", filename], "/"), 'best_delta_omega', 'best_omega_1', ...
      'q_whole', 'tim', 'pl', 'frame', 'max_deriv', 'size_epsilon', 'total', 'q_in_time')
