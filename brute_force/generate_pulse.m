@@ -28,6 +28,7 @@ omega_1 = omega_guess_fine;
 
 radii =  29 : -2 : 3;
 % radii =  30 : -2 : 4;
+q_in_time = zeros(160000, 1);
 
 centers = 1 : length(delta_omega);
 orig_centers = centers;
@@ -43,11 +44,15 @@ q_whole = get_Qn_new(delta_omega, omega_1, spacing, frame);
 
 b = 0;
 total = 0;
+q_record = 0;
 
 % Loop 1: change the center.
 while toc < max_time
     total = total + 1;
     if mod(total, 1000) == 0
+        q_record = q_record + 1;
+        q_in_time(q_record) = get_Qn_new(best_delta_omega, ...
+                                         best_omega_1, spacing, frame);
         fprintf('Iteration %d \n', total) 
         progress = toc/max_time*100;
         fprintf('Progress: %.1f%% \n', progress)
@@ -164,4 +169,4 @@ end
 tim = toc;
 
 save(join(["paper_output", filename], "/"), 'best_delta_omega', 'best_omega_1', ...
-     'q_whole', 'tim', 'pl', 'frame', 'max_deriv', 'size_epsilon', 'total')
+     'q_whole', 'tim', 'pl', 'frame', 'max_deriv', 'size_epsilon', 'total', 'q_in_time')
