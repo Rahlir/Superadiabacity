@@ -16,7 +16,7 @@ filename = "test.mat";
 frame = 2;
 max_deriv = 1;
 
-max_time = 5 * 3600;
+max_time = 6 * 3600;
 size_epsilon = 10;
 nop = 60;
 
