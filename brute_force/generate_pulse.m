@@ -16,15 +16,15 @@ filename = "test.mat";
 frame = 2;
 max_deriv = 1;
 
-max_time = 6 * 3600;
+max_time = 3 * 3600;
 size_epsilon = 10;
 nop = 60;
 
-load('random_pulse_paper.mat', 'delta_guess_fine', 'omega_guess_fine', 'original_q', 'dt', 'pl')
+load('n1result.mat', 'initial_delta', 'initial_omega', 'initial_q', 'dt', 'pl')
 
 % Start with saved guess pulse
-delta_omega = delta_guess_fine;
-omega_1 = omega_guess_fine;
+delta_omega = initial_delta;
+omega_1 = initial_omega;
 
 radii =  29 : -2 : 3;
 % radii =  30 : -2 : 4;
@@ -168,5 +168,5 @@ end
 
 tim = toc;
 
-save(join(["paper_output_v2", filename], "/"), 'best_delta_omega', 'best_omega_1', ...
+save(join(["paper_output_v3", filename], "/"), 'best_delta_omega', 'best_omega_1', ...
      'q_whole', 'tim', 'pl', 'frame', 'max_deriv', 'size_epsilon', 'total', 'q_in_time')
