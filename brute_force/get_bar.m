@@ -8,7 +8,7 @@
 %   column_name - name of the column which is used for the x-axis
 % Output:
 %   fig - figure with the bar chart
-
+%
 % Tadeáš Uhlíř
 % 03/27/2019
 % ------------------------------------------------------------------------------
@@ -22,15 +22,16 @@ function[fig] = get_bar(tb, column_name)
 
     n_categories = length(categories(categorical_column));
     n_pulses = length(categories(categorical(tb_sorted.Pulse_length)));
-    X = categorical_column;
+    
+    % Needs to run categorical again to only get unique categories
+    X = categorical(categories(categorical_column));
     Y = zeros(n_categories, n_pulses);
     Y_orig = zeros(n_categories, n_pulses);
-
 
     for i=1:n_pulses
         cats_pl = categories(categorical(tb_sorted.Pulse_length));
         pulse = cats_pl{i};
-        
+
         for j=1:n_categories
             param = X(j);
             ind = (categorical(tb_sorted.Pulse_length) == pulse) & (categorical_column == param);
@@ -39,8 +40,7 @@ function[fig] = get_bar(tb, column_name)
                 Y_orig(j, i) = tb_sorted.Original_Q(ind);
             end
         end
-        
-    end   
+    end
 
     leg_numbs = str2double(categories(categorical(tb_sorted.Pulse_length)));
     legs = strings(1, length(leg_numbs)+1);
