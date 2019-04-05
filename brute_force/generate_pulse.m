@@ -20,11 +20,11 @@ max_time = 3 * 3600;
 size_epsilon = 10;
 nop = 60;
 
-load('n1result.mat', 'initial_delta', 'initial_omega', 'initial_q', 'dt', 'pl')
+load('n1result.mat', 'delta_guess_fine', 'omega_guess_fine', 'original_q', 'dt', 'pl')
 
 % Start with saved guess pulse
-delta_omega = initial_delta;
-omega_1 = initial_omega;
+delta_omega = delta_guess_fine;
+omega_1 = omega_guess_fine;
 
 radii =  29 : -2 : 3;
 % radii =  30 : -2 : 4;
