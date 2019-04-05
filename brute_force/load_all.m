@@ -3,6 +3,8 @@
 % 
 % Inputs:
 %   dir_name - directory name where the data is saved
+%   initial_pulse_fn - filename of the initial (guess) pulse, 'random_pulse.mat'
+%                      by default
 % Outputs:
 %   data_final - table containing the data. Pulse lengths, optimized pulses,
 %                guess pulses, q-factors, improvement percentage, iterations,
@@ -10,14 +12,20 @@
 %
 % Tadeáš Uhlíř
 % 03/30/2019
+% Changed:
+% 04/04/2019
 % ------------------------------------------------------------------------------
 
-function[data_final] = load_all(dir_name)
+function[data_final] = load_all(dir_name, initial_pulse_fn)
 
     str_files = '*.mat';
 
     if nargin > 0
         str_files = strjoin({dir_name, str_files}, '/');
+    end
+
+    if nargin < 2
+        initial_pulse_fn = "random_pulse.mat";
     end
 
     files = dir(str_files);
@@ -34,8 +42,14 @@ function[data_final] = load_all(dir_name)
     frames = zeros(length(files), 1);
     max_derivs = zeros(length(files), 1);
 
-    load("random_pulse.mat", "delta_guess_fine", "omega_guess_fine", ...
+    load(initial_pulse_fn, "delta_guess_fine", "omega_guess_fine", ...
          "original_q", "dt", "pl")
+
+    % load("random_pulse_paper.mat", "delta_guess_fine", "omega_guess_fine", ...
+         % "original_q", "dt", "pl")
+    % original_q_short = original_q;
+    % load("random_pulse_new.mat", "delta_guess_fine", "omega_guess_fine", ...
+         % "original_q", "dt", "pl")
 
     for i=1:length(files)
         progress = (i-1)/length(files)*100;
@@ -53,6 +67,11 @@ function[data_final] = load_all(dir_name)
             'tim', 'pl', 'frame', 'max_deriv', 'total')
 
         q_origs(i) = original_q(frame);
+        % if pl < 60e-6
+            % q_origs(i) = original_q_short(frame);
+        % else
+            % q_origs(i) = original_q(frame);
+        % end
 
         guess_deltas(i, :) = delta_guess_fine;
         guess_omegas(i, :) = omega_guess_fine;
@@ -75,7 +94,9 @@ function[data_final] = load_all(dir_name)
     data_final = table(pls, frames, max_derivs, cat(3, best_deltas, best_omegas), ...
                        cat(3, guess_deltas, guess_omegas), q_wholes, q_origs, ...
                        imprvs, iterations, imprvs_m, ...
-                       'VariableNames', {'Pulse_length', 'Frame', 'Max_Derivative', 'Pulse', 'Guess_pulse', ...
-                       'Q_factor', 'Original_Q', 'Improvement', 'Iterations', 'Improvement_per_min'});
+                       'VariableNames', {'Pulse_length', 'Frame', ...
+                       'Max_Derivative', 'Pulse', 'Guess_pulse', ...
+                       'Q_factor', 'Original_Q', 'Improvement', ...
+                       'Iterations', 'Improvement_per_min'});
 
     % data_final = sortrows(data, {'Params', 'Pulse_length'});

@@ -49,7 +49,7 @@ function[fig] = plot_summary(data, inds)
     % s6 = all_axes(6);
 
     qs_all = zeros(10, length(inds));
-    legs = strings(1, length(inds)+1);
+    legs = strings(1, length(inds));
     % [x_ax, f_states_g, f_states, y2, y2_g] = do_stress_test(data, inds);
 
     colors = get(gca, 'ColorOrder');
@@ -73,6 +73,7 @@ function[fig] = plot_summary(data, inds)
         pulse = data.Pulse(i, :, :);
         nop = length(pulse(:, :, 1));
 
+        fprintf('Calculating stress for %d out of %d\n', ind, length(inds))
         x = 0 : pl/(nop-1) : pl;
         [x_ax, f_states] = get_stress(data, i);
 
