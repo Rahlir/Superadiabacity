@@ -12,7 +12,7 @@
 tic
 
 % Control parameters
-filename = "test.mat";
+filename = "something.mat";
 frame = 2;
 max_deriv = 1;
 
