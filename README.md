@@ -12,4 +12,4 @@ or `brute_force/Generate_pulse_live.m`
 
 
 
-**Readme In Progress**
+...
