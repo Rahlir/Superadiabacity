@@ -7,7 +7,6 @@ function[final_theta, pl, HZ] = get_slepian(bandwidth)
     omega_x = 1;
     % Choose pulse parameters.
     N = 2^10;
-    tau_p = 2*pi*bandwidth/omega_x;
     taus = linspace(0, tau_p, N);
 
     % Calculate total angle.
